@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111110">
+<meta name="description" content="Build your own fragrance bundle with MISTEVA. Choose your favourite 30ml perfumes and order on WhatsApp.">
+<title>Build Your Bundle | MISTEVA</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #111110;
+  --panel: #1b1b19;
+  --panel2: #22211e;
+  --text: #f5f0e7;
+  --muted: #aaa69d;
+  --gold: #c9aa75;
+  --gold-light: #e4d0a7;
+  --line: rgba(228,208,167,.18);
+  --green: #25d366;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.55;
+}
+
+button, a { font: inherit; }
+button { cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+button:focus-visible, a:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 4px;
+}
+
+.announcement {
+  padding: 9px 12px;
+  text-align: center;
+  background: var(--gold);
+  color: #17140f;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.nav {
+  min-height: 78px;
+  padding: 12px clamp(18px, 5vw, 75px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.brand img {
+  width: 43px;
+  height: 43px;
+  object-fit: contain;
+}
+
+.brand-name {
+  font: 22px "Playfair Display", serif;
+  letter-spacing: .18em;
+}
+
+.brand-tag {
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.nav-link {
+  color: var(--gold-light);
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.hero {
+  text-align: center;
+  padding: 72px 20px 58px;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(201,170,117,.13),
+    transparent 65%
+  );
+}
+
+.eyebrow, .step-label {
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 18px auto;
+  max-width: 850px;
+  font: 400 clamp(40px, 7vw, 76px)/1.1 "Playfair Display", serif;
+}
+
+.hero h1 em {
+  color: var(--gold-light);
+}
+
+.hero p {
+  max-width: 550px;
+  margin: auto;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.hero-meta {
+  margin-top: 27px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  color: #d4c8b3;
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.hero-meta span::before {
+  content: "✦";
+  color: var(--gold);
+  margin-right: 7px;
+}
+
+.container {
+  max-width: 1180px;
+  padding: 0 22px 75px;
+  margin: auto;
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 20px 0 24px;
+}
+
+.section-heading h2 {
+  margin: 5px 0 0;
+  font: 400 clamp(27px, 4vw, 38px) "Playfair Display", serif;
+}
+
+.section-note {
+  max-width: 260px;
+  text-align: right;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.offers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+  margin-bottom: 47px;
+}
+
+.offer {
+  position: relative;
+  min-height: 160px;
+  padding: 22px;
+  text-align: left;
+  color: var(--text);
+  background: linear-gradient(135deg, #20201d, #151514);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  transition: border-color .2s, background .2s;
+}
+
+.offer:hover, .offer.active {
+  border-color: var(--gold);
+}
+
+.offer.active {
+  background: linear-gradient(135deg, #29251e, #191817);
+  box-shadow: inset 0 0 0 1px var(--gold);
+}
+
+.pill {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 4px 8px;
+  background: var(--gold-light);
+  color: #17140f;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.offer h3 {
+  margin: 0 0 5px;
+  font: 400 25px "Playfair Display", serif;
+}
+
+.offer p {
+  max-width: 340px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.offer-price {
+  position: absolute;
+  top: 23px;
+  right: 20px;
+  text-align: right;
+}
+
+.offer-price strong {
+  display: block;
+  color: var(--gold-light);
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.offer-price small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.radio {
+  position: absolute;
+  right: 20px;
+  bottom: 19px;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #918778;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.offer.active .radio {
+  border-color: var(--gold);
+}
+
+.offer.active .radio::after {
+  content: "";
+  width: 9px;
+  height: 9px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.product {
+  min-width: 0;
+  background: #181817;
+  border: 1px solid var(--line);
+  transition: border-color .2s;
+}
+
+.product.selected {
+  border-color: var(--gold);
+}
+
+.product-image {
+  height: 250px;
+  position: relative;
+  overflow: hidden;
+  background: #242320;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform .4s;
+}
+
+.product:hover .product-image img {
+  transform: scale(1.04);
+}
+
+.selected-count {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 27px;
+  height: 27px;
+  align-items: center;
+  justify-content: center;
+  background: var(--gold-light);
+  color: #17140f;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.product.selected .selected-count {
+  display: flex;
+}
+
+.product-info {
+  padding: 15px;
+}
+
+.product-info h3 {
+  margin: 0 0 3px;
+  font: 400 20px "Playfair Display", serif;
+}
+
+.size {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.product-actions {
+  display: grid;
+  gap: 9px;
+  margin-top: 15px;
+}
+
+.qty-control {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--line);
+}
+
+.qty-control button {
+  width: 40px;
+  height: 34px;
+  color: var(--text);
+  background: transparent;
+  border: 0;
+  font-size: 19px;
+}
+
+.qty-control output {
+  font-size: 12px;
+}
+
+.add-btn {
+  padding: 10px 8px;
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: var(--gold-light);
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.add-btn:hover {
+  background: var(--gold);
+  color: #17140f;
+}
+
+button:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+.builder {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 330px;
+  align-items: start;
+  gap: 25px;
+  margin-top: 48px;
+}
+
+.summary {
+  position: sticky;
+  top: 18px;
+  padding: 23px;
+  background: linear-gradient(145deg, #1e1e1b, #141413);
+  border: 1px solid var(--line);
+}
+
+.summary-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 17px;
+  border-bottom: 1px solid var(--line);
+}
+
+.summary h3 {
+  margin: 0;
+  font: 400 25px "Playfair Display", serif;
+}
+
+.count-badge {
+  padding: 5px 7px;
+  background: var(--gold-light);
+  color: #17140f;
+  font-size: 9px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.slots {
+  display: grid;
+  gap: 9px;
+  margin: 17px 0;
+}
+
+.slot {
+  min-height: 62px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  border: 1px dashed rgba(228,208,167,.25);
+}
+
+.slot.filled {
+  border-style: solid;
+  border-color: rgba(201,170,117,.45);
+}
+
+.slot img {
+  width: 40px;
+  height: 44px;
+  object-fit: cover;
+  background: var(--panel2);
+}
+
+.slot-copy {
+  flex: 1;
+  min-width: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.slot-copy strong {
+  display: block;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.slot-copy small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.remove {
+  padding: 5px;
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  font-size: 19px;
+}
+
+.remove:hover {
+  color: var(--gold-light);
+}
+
+.progress {
+  height: 3px;
+  background: #37342d;
+}
+
+.progress span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--gold);
+  transition: width .2s;
+}
+
+.selection-status {
+  margin: 12px 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.selection-status b {
+  color: var(--gold-light);
+}
+
+.price-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 13px 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.price-line strong {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+  text-align: right;
+}
+
+.total {
+  padding-top: 15px;
+  border-top: 1px solid var(--line);
+}
+
+.total strong {
+  color: var(--gold-light);
+  font-size: 24px;
+}
+
+.saving {
+  color: var(--gold);
+  font-size: 11px;
+}
+
+.order-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 15px 10px;
+  background: var(--green);
+  border: 0;
+  color: #0d1b11;
+  font-size: 12px;
+  font-weight: 700;
+  transition: filter .2s;
+}
+
+.order-btn:hover {
+  filter: brightness(1.08);
+}
+
+.fineprint {
+  margin: 12px 0 0;
+  color: var(--muted);
+  text-align: center;
+  font-size: 10px;
+}
+
+.how {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 65px;
+  padding-top: 30px;
+  border-top: 1px solid var(--line);
+}
+
+.how-item {
+  display: flex;
+  gap: 12px;
+}
+
+.how-num {
+  color: var(--gold);
+  font: 24px "Playfair Display", serif;
+}
+
+.how-item h4 {
+  margin: 3px 0 6px;
+  font-size: 12px;
+}
+
+.how-item p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.footer {
+  padding: 28px 18px;
+  text-align: center;
+  border-top: 1px solid var(--line);
+}
+
+.footer img {
+  width: 43px;
+  height: 43px;
+  object-fit: contain;
+}
+
+.footer p {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.footer small {
+  color: #817c72;
+  font-size: 10px;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  z-index: 10;
+  width: max-content;
+  max-width: calc(100% - 30px);
+  padding: 12px 17px;
+  background: var(--gold-light);
+  color: #17140f;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 12px);
+  transition: .2s;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (max-width: 900px) {
+  .products { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .product-image { height: 270px; }
+  .builder { grid-template-columns: minmax(0, 1fr) 300px; gap: 15px; }
+}
+
+@media (max-width: 650px) {
+  .announcement { font-size: 9px; }
+  .nav { min-height: 68px; padding: 10px 15px; }
+  .brand img { width: 36px; height: 36px; }
+  .brand-name { font-size: 18px; }
+  .brand-tag { font-size: 8px; }
+  .nav-link { font-size: 9px; }
+  .hero { padding: 52px 18px 43px; }
+  .hero p { font-size: 13px; }
+  .hero-meta { gap: 12px; font-size: 9px; }
+  .container { padding: 0 14px 55px; }
+  .section-heading { display: block; }
+  .section-note { text-align: left; margin-top: 8px; }
+  .offers { grid-template-columns: 1fr; gap: 11px; margin-bottom: 38px; }
+  .offer { min-height: 145px; padding: 19px; }
+  .offer h3 { font-size: 23px; }
+  .offer p { max-width: 70%; font-size: 11px; }
+  .offer-price { top: 20px; right: 17px; }
+  .offer-price strong { font-size: 21px; }
+  .radio { right: 17px; bottom: 17px; }
+  .products { gap: 10px; }
+  .product-image { height: 205px; }
+  .product-info { padding: 12px 10px; }
+  .product-info h3 { font-size: 18px; min-height: 45px; }
+  .product-actions { gap: 8px; }
+  .builder { display: flex; flex-direction: column; gap: 0; margin-top: 38px; }
+  .summary { position: static; width: 100%; margin-top: 25px; padding: 18px; }
+  .how { grid-template-columns: 1fr; gap: 18px; margin-top: 45px; }
+}
+
+@media (max-width: 380px) {
+  .product-image { height: 175px; }
+  .product-info h3 { font-size: 16px; }
+  .offer-price strong { font-size: 19px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="announcement">
+  A signature scent, curated by you · MISTEVA
+</div>
+
+<header class="nav">
+  <a class="brand" href="https://mistevapremiumstore.vercel.app/">
+    <img
+      src="https://res.cloudinary.com/hrzmps2r/image/upload/f_auto,q_auto/Brand_Logo"
+      alt="MISTEVA logo"
+      onerror="this.style.display='none'"
+    >
+    <span>
+      <span class="brand-name">MISTEVA</span><br>
+      <span class="brand-tag">A mist that brings personality</span>
+    </span>
+  </a>
+
+  <a class="nav-link" href="#builder">Build your bundle ↗</a>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">The MISTEVA Bundle Studio</div>
+  <h1>Your scent.<br><em>Your selection.</em></h1>
+  <p>
+    Choose the fragrances that feel like you. Curate your own
+    combination and place your order directly with us on WhatsApp.
+  </p>
+  <div class="hero-meta">
+    <span>30 ml each</span>
+    <span>Choose your favourites</span>
+    <span>Order via WhatsApp</span>
+  </div>
+</section>
+
+<main class="container" id="builder">
+
+  <div class="section-heading">
+    <div>
+      <div class="step-label">Step 01 / Choose your offer</div>
+      <h2>Pick your bundle</h2>
+    </div>
+    <div class="section-note">
+      Start with an offer, then personalise it with your favourite scents.
+    </div>
+  </div>
+
+  <div class="offers" role="group" aria-label="Choose a bundle">
+
+    <button class="offer active" data-bundle="2" aria-pressed="true">
+      <span class="pill">Signature offer</span>
+      <div class="offer-price">
+        <strong>৳1,300</strong>
+        <small>Save ৳200</small>
+      </div>
+      <h3>The Duo</h3>
+      <p>Any 2 × 30 ml fragrances. Choose the same scent twice if you wish.</p>
+      <span class="radio"></span>
+    </button>
+
+    <button class="offer" data-bundle="3" aria-pressed="false">
+      <span class="pill">Make it yours</span>
+      <div class="offer-price">
+        <strong>Custom</strong>
+        <small>Price to confirm</small>
+      </div>
+      <h3>The Trio</h3>
+      <p>Choose any 3 × 30 ml fragrances. Mix, match or repeat a favourite.</p>
+      <span class="radio"></span>
+    </button>
+
+  </div>
+
+  <section>
+    <div class="section-heading">
+      <div>
+        <div class="step-label">Step 02 / Select your fragrances</div>
+        <h2>The fragrance edit</h2>
+      </div>
+      <div class="section-note">
+        Tap + to add a scent. Repeated selections count as separate bottles.
+      </div>
+    </div>
+
+    <div class="products" id="products">
+
+      <article class="product" data-id="dior">
+        <div class="product-image">
+          <img
+            src="https://res.cloudinary.com/hrzmps2r/image/upload/v1790447517/Dior_sauvage.jpg"
+            alt="Dior Sauvage 30 ml"
+          >
+          <span class="selected-count">0</span>
+        </div>
+        <div class="product-info">
+          <h3>Dior Sauvage</h3>
+          <div class="size">30 ml · Fragrance</div>
+          <div class="product-actions">
+            <div class="qty-control">
+              <button type="button" class="minus" aria-label="Remove Dior Sauvage">−</button>
+              <output>0</output>
+              <button type="button" class="plus" aria-label="Add Dior Sauvage">+</button>
+            </div>
+            <button type="button" class="add-btn">Add scent +</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product" data-id="hawas">
+        <div class="product-image">
+          <img
+            src="https://res.cloudinary.com/hrzmps2r/image/upload/v1790447518/Hawas_fire.jpg"
+            alt="Hawas Fire 30 ml"
+          >
+          <span class="selected-count">0</span>
+        </div>
+        <div class="product-info">
+          <h3>Hawas Fire</h3>
+          <div class="size">30 ml · Fragrance</div>
+          <div class="product-actions">
+            <div class="qty-control">
+              <button type="button" class="minus" aria-label="Remove Hawas Fire">−</button>
+              <output>0</output>
+              <button type="button" class="plus" aria-label="Add Hawas Fire">+</button>
+            </div>
+            <button type="button" class="add-btn">Add scent +</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product" data-id="gucci">
+        <div class="product-image">
+          <img
+            src="https://res.cloudinary.com/hrzmps2r/image/upload/v1790447518/Gucci_flora.jpg"
+            alt="Gucci Flora 30 ml"
+          >
+          <span class="selected-count">0</span>
+        </div>
+        <div class="product-info">
+          <h3>Gucci Flora</h3>
+          <div class="size">30 ml · Fragrance</div>
+          <div class="product-actions">
+            <div class="qty-control">
+              <button type="button" class="minus" aria-label="Remove Gucci Flora">−</button>
+              <output>0</output>
+              <button type="button" class="plus" aria-label="Add Gucci Flora">+</button>
+            </div>
+            <button type="button" class="add-btn">Add scent +</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product" data-id="vampire">
+        <div class="product-image">
+          <img
+            src="https://res.cloudinary.com/hrzmps2r/image/upload/v1790447518/Vampire_blood.jpg"
+            alt="Vampire Blood 30 ml"
+          >
+          <span class="selected-count">0</span>
+        </div>
+        <div class="product-info">
+          <h3>Vampire Blood</h3>
+          <div class="size">30 ml · Fragrance</div>
+          <div class="product-actions">
+            <div class="qty-control">
+              <button type="button" class="minus" aria-label="Remove Vampire Blood">−</button>
+              <output>0</output>
+              <button type="button" class="plus" aria-label="Add Vampire Blood">+</button>
+            </div>
+            <button type="button" class="add-btn">Add scent +</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <div class="builder">
+
+    <section>
+      <div class="section-heading">
+        <div>
+          <div class="step-label">Step 03 / Review your selection</div>
+          <h2>Your personal edit</h2>
+        </div>
+      </div>
+
+      <p style="color:var(--muted);font-size:13px">
+        For the Duo, get any 2 × 30 ml fragrances for ৳1,300
+        instead of ৳1,500. Trio pricing will be confirmed with
+        MISTEVA before the order is finalised.
+      </p>
+
+      <div class="how">
+        <div class="how-item">
+          <div class="how-num">01</div>
+          <div>
+            <h4>Choose an offer</h4>
+            <p>Select the Duo offer or build a custom Trio.</p>
+          </div>
+        </div>
+        <div class="how-item">
+          <div class="how-num">02</div>
+          <div>
+            <h4>Curate your scents</h4>
+            <p>Mix fragrances or repeat the one you love.</p>
+          </div>
+        </div>
+        <div class="how-item">
+          <div class="how-num">03</div>
+          <div>
+            <h4>Order on WhatsApp</h4>
+            <p>Send your selection to confirm your order.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="summary" aria-live="polite">
+      <div class="summary-top">
+        <h3>Your bundle</h3>
+        <span class="count-badge" id="countBadge">0 / 2 BOTTLES</span>
+      </div>
+
+      <div class="slots" id="slots"></div>
+
+      <div class="progress">
+        <span id="progressBar"></span>
+      </div>
+
+      <div class="selection-status" id="statusText">
+        Select <b>2 bottles</b> to complete your Duo.
+      </div>
+
+      <div class="price-line">
+        <span>Bundle</span>
+        <strong id="bundleName">The Duo</strong>
+      </div>
+
+      <div class="price-line">
+        <span>Regular price</span>
+        <strong id="regularPrice">৳1,500</strong>
+      </div>
+
+      <div class="price-line total">
+        <span>Total offer price</span>
+        <strong id="totalPrice">৳1,300</strong>
+      </div>
+
+      <div class="saving" id="savingText">
+        You save ৳200 with this offer.
+      </div>
+
+      <button class="order-btn" id="orderBtn" disabled>
+        ↗ &nbsp; Order via WhatsApp
+      </button>
+
+      <p class="fineprint" id="fineprint">
+        Your order opens in WhatsApp for confirmation.
+      </p>
+    </aside>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <a href="https://mistevapremiumstore.vercel.app/">
+    <img
+      src="https://res.cloudinary.com/hrzmps2r/image/upload/f_auto,q_auto/Brand_Logo"
+      alt="MISTEVA"
+    >
+  </a>
+  <p>A mist that brings personality</p>
+  <small>
+    © 2026 MISTEVA. All rights reserved. ·
+    <a href="https://mistevapremiumstore.vercel.app/">Official website</a>
+  </small>
+</footer>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(() => {
+  "use strict";
+
+  const WHATSAPP_NUMBER = "8801897928107";
+
+  const products = [
+    {
+      id: "dior",
+      name: "Dior Sauvage",
+      image: "https://res.cloudinary.com/hrzmps2r/image/upload/v1790447517/Dior_sauvage.jpg"
+    },
+    {
+      id: "hawas",
+      name: "Hawas Fire",
+      image: "https://res.cloudinary.com/hrzmps2r/image/upload/v1790447518/Hawas_fire.jpg"
+    },
+    {
+      id: "gucci",
+      name: "Gucci Flora",
+      image: "https://res.cloudinary.com/hrzmps2r/image/upload/v1790447518/Gucci_flora.jpg"
+    },
+    {
+      id: "vampire",
+      name: "Vampire Blood",
+      image: "https://res.cloudinary.com/hrzmps2r/image/upload/v1790447518/Vampire_blood.jpg"
+    }
+  ];
+
+  const counts = Object.fromEntries(
+    products.map(product => [product.id, 0])
+  );
+
+  let bundleSize = 2;
+  let toastTimer;
+
+  const totalCount = () =>
+    Object.values(counts).reduce((sum, count) => sum + count, 0);
+
+  const money = amount =>
+    "৳" + amount.toLocaleString("en-US");
+
+  const getSelectedBottles = () =>
+    products.flatMap(product =>
+      Array(counts[product.id]).fill(product)
+    );
+
+  function showToast(message) {
+    const toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(() => {
+      toast.classList.remove("show");
+    }, 2400);
+  }
+
+  function changeBundle(size) {
+    bundleSize = size;
+
+    // Keep existing selections when possible.
+    // Trim the last product selections only if necessary.
+    while (totalCount() > bundleSize) {
+      const lastProduct = [...products]
+        .reverse()
+        .find(product => counts[product.id] > 0);
+
+      if (!lastProduct) break;
+
+      counts[lastProduct.id]--;
+    }
+
+    document.querySelectorAll(".offer").forEach(button => {
+      const active = Number(button.dataset.bundle) === size;
+
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+
+    render();
+  }
+
+  function changeQuantity(id, amount) {
+    if (amount > 0 && totalCount() >= bundleSize) {
+      showToast(
+        `Your ${bundleSize}-bottle bundle is full. Remove a bottle or choose another bundle.`
+      );
+      return;
+    }
+
+    if (amount < 0 && counts[id] === 0) return;
+
+    counts[id] += amount;
+    render();
+  }
+
+  function render() {
+    const selectedTotal = totalCount();
+    const complete = selectedTotal === bundleSize;
+    const selectedBottles = getSelectedBottles();
+
+    document.querySelectorAll(".product").forEach(card => {
+      const id = card.dataset.id;
+      const quantity = counts[id];
+
+      card.classList.toggle("selected", quantity > 0);
+
+      card.querySelector("output").textContent = quantity;
+      card.querySelector(".selected-count").textContent = quantity;
+
+      card.querySelector(".minus").disabled = quantity === 0;
+      card.querySelector(".plus").disabled =
+        selectedTotal >= bundleSize;
+
+      card.querySelector(".add-btn").disabled =
+        selectedTotal >= bundleSize;
+
+      card.querySelector(".add-btn").textContent =
+        selectedTotal >= bundleSize
+          ? "Bundle full"
+          : "Add scent +";
+    });
+
+    // Render exactly the number of slots required by the selected bundle.
+    const slots = document.getElementById("slots");
+    slots.replaceChildren();
+
+    for (let index = 0; index < bundleSize; index++) {
+      const product = selectedBottles[index];
+      const slot = document.createElement("div");
+
+      slot.className = "slot " + (product ? "filled" : "empty");
+
+      if (product) {
+        const image = document.createElement("img");
+        image.src = product.image;
+        image.alt = product.name;
+
+        const copy = document.createElement("div");
+        copy.className = "slot-copy";
+
+        const name = document.createElement("strong");
+        name.textContent = product.name;
+
+        const details = document.createElement("small");
+        details.textContent = `30 ml · Bottle ${index + 1}`;
+
+        copy.append(name, details);
+
+        const remove = document.createElement("button");
+        remove.className = "remove";
+        remove.type = "button";
+        remove.textContent = "×";
+        remove.setAttribute("aria-label", `Remove ${product.name}`);
+
+        remove.addEventListener("click", () => {
+          changeQuantity(product.id, -1);
+        });
+
+        slot.append(image, copy, remove);
+      } else {
+        const copy = document.createElement("div");
+        copy.className = "slot-copy";
+        copy.textContent = `Choose a fragrance for bottle ${index + 1}.`;
+
+        slot.append(copy);
+      }
+
+      slots.append(slot);
+    }
+
+    document.getElementById("countBadge").textContent =
+      `${selectedTotal} / ${bundleSize} BOTTLES`;
+
+    document.getElementById("progressBar").style.width =
+      `${(selectedTotal / bundleSize) * 100}%`;
+
+    document.getElementById("statusText").innerHTML = complete
+      ? "<b>Bundle complete.</b> Ready to send your selection."
+      : `Select <b>${bundleSize - selectedTotal} more bottle${
+          bundleSize - selectedTotal === 1 ? "" : "s"
+        }</b> to complete your ${bundleSize === 2 ? "Duo" : "Trio"}.`;
+
+    document.getElementById("bundleName").textContent =
+      bundleSize === 2 ? "The Duo" : "The Trio";
+
+    document.getElementById("regularPrice").textContent =
+      bundleSize === 2 ? money(1500) : "To confirm";
+
+    document.getElementById("totalPrice").textContent =
+      bundleSize === 2 ? money(1300) : "Confirm on WhatsApp";
+
+    document.getElementById("savingText").textContent =
+      bundleSize === 2
+        ? "You save ৳200 with this offer."
+        : "Trio price will be confirmed by MISTEVA.";
+
+    document.getElementById("orderBtn").disabled = !complete;
+
+    document.getElementById("fineprint").textContent =
+      bundleSize === 2
+        ? "Your ৳1,300 Duo offer will be confirmed on WhatsApp."
+        : "MISTEVA will confirm the Trio price on WhatsApp.";
+  }
+
+  document.querySelectorAll(".offer").forEach(button => {
+    button.addEventListener("click", () => {
+      changeBundle(Number(button.dataset.bundle));
+    });
+  });
+
+  document.querySelectorAll(".product").forEach(card => {
+    const id = card.dataset.id;
+
+    card.querySelector(".minus").addEventListener("click", () => {
+      changeQuantity(id, -1);
+    });
+
+    card.querySelector(".plus").addEventListener("click", () => {
+      changeQuantity(id, 1);
+    });
+
+    card.querySelector(".add-btn").addEventListener("click", () => {
+      changeQuantity(id, 1);
+    });
+  });
+
+  document.getElementById("orderBtn").addEventListener("click", () => {
+    if (totalCount() !== bundleSize) return;
+
+    const orderLines = products
+      .filter(product => counts[product.id] > 0)
+      .map(product =>
+        `• ${product.name} 30 ml × ${counts[product.id]}`
+      )
+      .join("\n");
+
+    const bundleName = bundleSize === 2
+      ? "The Duo (2 bottles)"
+      : "The Trio (3 bottles)";
+
+    const price = bundleSize === 2
+      ? "৳1,300 (regular price ৳1,500; savings ৳200)"
+      : "Trio price to be confirmed by MISTEVA";
+
+    const message =
+`Hello MISTEVA! I'd like to order a custom fragrance bundle.
+
+Bundle: ${bundleName}
+
+My selected fragrances:
+${orderLines}
+
+Total: ${price}
+
+Please confirm product availability, final price and delivery details.`;
+
+    const whatsappURL =
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappURL, "_blank");
+  });
+
+  render();
+})();
+</script>
+
+</body>
+</html>
